@@ -5,8 +5,6 @@ const Score = () => {
   return (
     <div className='frame-container'>
       <Frame />
-      <Frame />
-      <Frame />
     </div>
   );
 };
