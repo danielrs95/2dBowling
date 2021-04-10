@@ -19,12 +19,17 @@ code {
   --frame-text-hgt: 26px;
 }
 
+.frame-container {
+  display: flex;
+}
+
 .frame {
   position: relative;
   width: 70px;
   height: 70px;
   background-color: var(--frame-bg);
   color: var(--frame-text);
+  margin-right: 2px;
 }
 
 .frame .first-pin {

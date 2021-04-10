@@ -1,11 +1,12 @@
 import React from "react";
-import Frame from "./components/Frame";
+import Rolls from "./components/Rolls";
+import Score from "./components/Score";
 
 const App = () => {
   return (
     <div>
-      <Frame />
-      2D Bowling
+      <Rolls />
+      <Score />
     </div>
   );
 };
