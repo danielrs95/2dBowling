@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../actions/playerActions";
 
 const HomeScreen = () => {
+  const [namePlayer1, setNamePlayer1] = useState("");
+  const [namePlayer2, setNamePlayer2] = useState("");
+
+  const dispatch = useDispatch();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(namePlayer1));
+  };
+
   return (
     <Container>
       <Row className='justify-content-md-center'>
         <Col xs={12} md={6}>
-          <Form>
+          <Form onSubmit={submitHandler}>
             <Form.Group controlId='player1'>
               <Form.Label>Player 1</Form.Label>
               <Form.Control
                 type='name'
                 placeholder='Enter name'
-                // value={name}
-                // onChange={(e) => setName(e.target.value)}
+                value={namePlayer1}
+                onChange={(e) => setNamePlayer1(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
@@ -22,8 +34,8 @@ const HomeScreen = () => {
               <Form.Control
                 type='name'
                 placeholder='Enter name'
-                // value={name}
-                // onChange={(e) => setName(e.target.value)}
+                value={namePlayer2}
+                onChange={(e) => setNamePlayer2(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
