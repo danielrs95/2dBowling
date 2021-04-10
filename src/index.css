@@ -15,6 +15,8 @@ code {
 :root {
   --frame-bg: #333;
   --frame-text: white;
+  --pin-text-hgt: 18px;
+  --frame-text-hgt: 26px;
 }
 
 .frame {
@@ -27,16 +29,24 @@ code {
 
 .frame .first-pin {
   float: left;
-  margin: 4px;
+  padding: 4px 6px 4px 6px;
+  font-size: var(--pin-text-hgt);
 }
 
 .frame .second-pin {
   float: right;
-  margin: 4px;
+  padding: 4px 8px 4px 8px;
+  font-size: var(--pin-text-hgt);
+  border-left: 2px solid whitesmoke;
+  border-bottom: 2px solid whitesmoke;
 }
 
 .frame p {
   position: absolute;
   bottom: 0;
   margin: 0;
+  padding-bottom: 5px;
+  font-size: var(--frame-text-hgt);
+  text-align: center;
+  width: 100%;
 }
