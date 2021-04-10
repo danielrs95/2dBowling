@@ -2,7 +2,7 @@ import {
   PLAYER_LOGIN_FAIL,
   PLAYER_LOGIN_REQUEST,
   PLAYER_LOGIN_SUCCESS,
-} from "../actions/playerActions";
+} from "../constants/playerConstants";
 
 export const playerLoginReducer = (state = {}, action) => {
   switch (action.type) {
