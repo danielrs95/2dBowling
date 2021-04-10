@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/playerActions";
 
-const HomeScreen = () => {
+const HomeScreen = ({ history }) => {
   const [namePlayer1, setNamePlayer1] = useState("");
   const [namePlayer2, setNamePlayer2] = useState("");
 
@@ -12,6 +12,7 @@ const HomeScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(namePlayer1, namePlayer2));
+    history.push("/game");
   };
 
   return (
