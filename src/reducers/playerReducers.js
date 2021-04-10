@@ -10,7 +10,7 @@ export const playerLoginReducer = (state = {}, action) => {
       return { loading: true };
 
     case PLAYER_LOGIN_SUCCESS:
-      return { loading: false, player1: action.payload };
+      return { loading: false, players: action.payload };
 
     case PLAYER_LOGIN_FAIL:
       return { loading: false, error: action.payload };

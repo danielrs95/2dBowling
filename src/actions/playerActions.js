@@ -4,7 +4,7 @@ import {
   PLAYER_LOGIN_SUCCESS,
 } from "../constants/playerConstants";
 
-export const login = (name) => async (dispatch) => {
+export const login = (name, name2) => async (dispatch) => {
   try {
     dispatch({
       type: PLAYER_LOGIN_REQUEST,
@@ -12,7 +12,7 @@ export const login = (name) => async (dispatch) => {
 
     dispatch({
       type: PLAYER_LOGIN_SUCCESS,
-      payload: name,
+      payload: { player1: name, player2: name2 },
     });
   } catch (error) {
     dispatch({

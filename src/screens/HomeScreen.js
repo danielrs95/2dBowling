@@ -11,7 +11,7 @@ const HomeScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(namePlayer1));
+    dispatch(login(namePlayer1, namePlayer2));
   };
 
   return (
