@@ -10,7 +10,6 @@ export const globalStateReducer = (
     started: false,
     players: [],
     score: [],
-    frame: [],
     ended: false,
   },
   action
@@ -26,18 +25,30 @@ export const globalStateReducer = (
       return { ...state, started: false, error: action.payload };
 
     case SET_FIRST_PIN:
-      if (state.frame.length < 2) {
-        // Almacenamos los pines en Frame
-        return { ...state, frame: state.frame.concat(action.payload) };
-      } else if (state.frame.length === 2 && state.score.length < 10) {
-        // Cuando ya tenemos 2 pines, agregamos el valor al score
+      if (state.score.length > 0) {
+        // El ultimo elemento del score
+        const [lastItem] = state.score.slice(-1);
+
+        if (lastItem.length < 2) {
+          //Eliminamos el ultimo elemento del score
+          state.score.pop();
+          let newLastItem = lastItem.concat(action.payload);
+          return {
+            ...state,
+            score: state.score.concat([newLastItem]),
+          };
+        } else if (lastItem.length === 2) {
+          return {
+            ...state,
+            score: state.score.concat([action.payload]),
+          };
+        }
+      } else {
+        // Primer valor a agregar
         return {
           ...state,
-          score: state.score.concat([state.frame]),
-          frame: [],
+          score: state.score.concat([action.payload]),
         };
-      } else {
-        console.log("Error");
       }
 
     default:

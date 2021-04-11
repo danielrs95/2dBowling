@@ -23,28 +23,29 @@ const Score = () => {
   };
 
   emptyFrames();
-  console.log(score);
+  // console.log(score);
 
   return (
     <>
-      <thead>
-        <td>Player</td>
-        {pins.map((pin, i) => (
-          <td key={i}>Frame {i + 1}</td>
-        ))}
-        <td>Score</td>
+      <table className='table table-bordered'>
+        <thead>
+          <td>Player</td>
+          {pins.map((pin, i) => (
+            <td key={i}>Frame {i + 1}</td>
+          ))}
+          <td>Score</td>
 
-        <tr>
-          <td>Player 1</td>
-          {score.length > 1 ? (
-            score.map((tableCell) => <td>{tableCell}</td>)
-          ) : (
-            <td></td>
-          )}
-          <td>xxxx</td>
-        </tr>
-      </thead>
-
+          <tr>
+            <td>Player 1</td>
+            {score.length > 1 ? (
+              score.map((tableCell) => <td>{tableCell}</td>)
+            ) : (
+              <td></td>
+            )}
+            <td>xxxx</td>
+          </tr>
+        </thead>
+      </table>
       {/* <div className='frame-container'>
         <div className='frame'>
           <span className='first-pin'>{score[0]}</span>
