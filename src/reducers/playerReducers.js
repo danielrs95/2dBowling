@@ -10,6 +10,7 @@ export const globalStateReducer = (
     started: false,
     players: [],
     score: [],
+    frame: [],
     ended: false,
   },
   action
@@ -25,10 +26,18 @@ export const globalStateReducer = (
       return { ...state, started: false, error: action.payload };
 
     case SET_FIRST_PIN:
-      if (state.score.length < 2) {
-        return { ...state, score: state.score.concat(action.payload) };
+      if (state.frame.length < 2) {
+        // Almacenamos los pines en Frame
+        return { ...state, frame: state.frame.concat(action.payload) };
+      } else if (state.frame.length === 2) {
+        // Cuando ya tenemos 2 pines, agregamos el valor al score
+        return {
+          ...state,
+          score: state.score.concat([state.frame]),
+          frame: [],
+        };
       } else {
-        console.log("Score solo puede tener 2 valores");
+        console.log("Error");
       }
 
     default:
