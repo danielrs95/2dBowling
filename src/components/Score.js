@@ -15,8 +15,6 @@ const Score = () => {
     // Hacemos el estado dependiende de  score
     setFrames(emptyFrames());
     setPlayerScore(calculateScore(score));
-    console.log("render");
-    console.log(playerScore);
   }, [score]);
 
   // let pins = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -34,6 +32,17 @@ const Score = () => {
   const calculateScore = (frames) => {
     // Flat al array
     let flatArray = [].concat.apply([], frames);
+
+    for (let i = 0; i < frames.length; i++) {
+      // Miramos si el frame suma 10 puntos
+      let frameSum = frames[i].reduce((res, curr) => res + curr, 0) === 10;
+      let isStrike = frameSum && frames[i].length === 1;
+
+      if (isStrike) {
+        console.log("STRIKE!");
+      }
+    }
+
     if (flatArray.length > 0) {
       return flatArray.reduce((res, curr) => {
         return res + curr;
