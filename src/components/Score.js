@@ -36,6 +36,7 @@ const Score = () => {
     for (let i = 0; i < frames.length; i++) {
       // Miramos si el frame suma 10 puntos
       let frameSum = frames[i].reduce((res, curr) => res + curr, 0) === 10;
+      // Miramos si es strike, es decir, 10 puntos en 1 tiro (length===1)
       let isStrike = frameSum && frames[i].length === 1;
 
       if (isStrike) {
