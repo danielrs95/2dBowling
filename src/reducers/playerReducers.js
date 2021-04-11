@@ -29,7 +29,7 @@ export const globalStateReducer = (
       if (state.frame.length < 2) {
         // Almacenamos los pines en Frame
         return { ...state, frame: state.frame.concat(action.payload) };
-      } else if (state.frame.length === 2) {
+      } else if (state.frame.length === 2 && state.score.length < 10) {
         // Cuando ya tenemos 2 pines, agregamos el valor al score
         return {
           ...state,
