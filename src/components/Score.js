@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Score = () => {
@@ -7,8 +7,10 @@ const Score = () => {
   const globalState = useSelector((state) => state.globalState);
   const { score, frame } = globalState;
 
+  const [frames, setFrames] = useState([]);
+
   useEffect(() => {
-    console.log("useEffect activado");
+    setFrames(emptyFrames());
   }, [score, frame]);
 
   // let pins = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -19,10 +21,10 @@ const Score = () => {
   const emptyFrames = () => {
     let numFrames = 10 - score.length;
     let empty_frames = Array.from({ length: numFrames }).map(() => []);
-    return score.concat(empty_frames);
+    let new_frames = score.concat(empty_frames);
+    return new_frames;
   };
 
-  emptyFrames();
   // console.log(score);
 
   return (
@@ -37,7 +39,11 @@ const Score = () => {
 
           <tr>
             <td>Player 1</td>
-            {score ? score.map((tableCell) => <td>{tableCell}</td>) : <td></td>}
+            {frames ? (
+              frames.map((tableCell) => <td>{tableCell}</td>)
+            ) : (
+              <td></td>
+            )}
             <td>xxxx</td>
           </tr>
         </thead>
