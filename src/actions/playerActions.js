@@ -12,7 +12,7 @@ export const login = (name, name2) => async (dispatch) => {
 
     dispatch({
       type: PLAYER_LOGIN_SUCCESS,
-      payload: { player1: name, player2: name2 },
+      payload: [name, name2],
     });
   } catch (error) {
     dispatch({

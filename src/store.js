@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { playerLoginReducer } from "./reducers/playerReducers";
+import { globalStateReducer } from "./reducers/playerReducers";
 
 const reducer = combineReducers({
-  playerLogin: playerLoginReducer,
+  globalState: globalStateReducer,
 });
 
 const initialState = {};

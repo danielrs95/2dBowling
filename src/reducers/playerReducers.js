@@ -4,16 +4,24 @@ import {
   PLAYER_LOGIN_SUCCESS,
 } from "../constants/playerConstants";
 
-export const playerLoginReducer = (state = {}, action) => {
+export const globalStateReducer = (
+  state = {
+    started: false,
+    players: [],
+    score: [],
+    ended: false,
+  },
+  action
+) => {
   switch (action.type) {
     case PLAYER_LOGIN_REQUEST:
-      return { loading: true };
+      return { ...state, started: true };
 
     case PLAYER_LOGIN_SUCCESS:
-      return { loading: false, players: action.payload };
+      return { ...state, players: action.payload };
 
     case PLAYER_LOGIN_FAIL:
-      return { loading: false, error: action.payload };
+      return { ...state, started: false, error: action.payload };
 
     default:
       return state;
