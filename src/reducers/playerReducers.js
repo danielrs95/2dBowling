@@ -37,11 +37,13 @@ export const globalStateReducer = (
             ...state,
             score: state.score.concat([newLastItem]),
           };
-        } else if (lastItem.length === 2) {
+        } else if (lastItem.length === 2 && state.score.length < 10) {
           return {
             ...state,
             score: state.score.concat([action.payload]),
           };
+        } else {
+          console.log("10 frames reached");
         }
       } else {
         // Primer valor a agregar

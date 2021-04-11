@@ -37,11 +37,7 @@ const Score = () => {
 
           <tr>
             <td>Player 1</td>
-            {score.length > 1 ? (
-              score.map((tableCell) => <td>{tableCell}</td>)
-            ) : (
-              <td></td>
-            )}
+            {score ? score.map((tableCell) => <td>{tableCell}</td>) : <td></td>}
             <td>xxxx</td>
           </tr>
         </thead>
