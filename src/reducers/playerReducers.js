@@ -28,8 +28,11 @@ export const globalStateReducer = (
       if (state.score.length > 0) {
         // El ultimo elemento del score
         const [lastItem] = state.score.slice(-1);
+        let frameCount = state.score.length;
+        let frame = state.score[frameCount - 1];
+        let isStrike = frame.length === 1 ? frame[0] === 10 : false;
 
-        if (lastItem.length < 2) {
+        if (lastItem.length < 2 && isStrike === false) {
           //Eliminamos el ultimo elemento del score
           state.score.pop();
           let newLastItem = lastItem.concat(action.payload);
@@ -38,6 +41,11 @@ export const globalStateReducer = (
             score: state.score.concat([newLastItem]),
           };
         } else if (lastItem.length === 2 && state.score.length < 10) {
+          return {
+            ...state,
+            score: state.score.concat([action.payload]),
+          };
+        } else if (isStrike) {
           return {
             ...state,
             score: state.score.concat([action.payload]),
