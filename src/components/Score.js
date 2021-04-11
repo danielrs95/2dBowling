@@ -8,10 +8,16 @@ const Score = () => {
   const { score, frame } = globalState;
 
   const [frames, setFrames] = useState([]);
+  const [playerScore, setPlayerScore] = useState("");
 
   useEffect(() => {
+    // Creamos los frames que usaremos para la tabla
+    // Hacemos el estado dependiende de  score
     setFrames(emptyFrames());
-  }, [score, frame]);
+    setPlayerScore(calculateScore(score));
+    console.log("render");
+    console.log(playerScore);
+  }, [score]);
 
   // let pins = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   // Creamos array con length 10
@@ -25,7 +31,17 @@ const Score = () => {
     return new_frames;
   };
 
-  // console.log(score);
+  const calculateScore = (frames) => {
+    // Flat al array
+    let flatArray = [].concat.apply([], frames);
+    if (flatArray.length > 0) {
+      return flatArray.reduce((res, curr) => {
+        return res + curr;
+      });
+    } else {
+      console.log("error");
+    }
+  };
 
   return (
     <>
@@ -39,12 +55,10 @@ const Score = () => {
 
           <tr>
             <td>Player 1</td>
-            {frames ? (
-              frames.map((tableCell) => <td>{tableCell}</td>)
-            ) : (
-              <td></td>
-            )}
-            <td>xxxx</td>
+            {frames.map((tableCell) => (
+              <td>{tableCell}</td>
+            ))}
+            <td>{playerScore}</td>
           </tr>
         </thead>
       </table>
