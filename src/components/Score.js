@@ -38,9 +38,12 @@ const Score = () => {
       let frameSum = frames[i].reduce((res, curr) => res + curr, 0) === 10;
       // Miramos si es strike, es decir, 10 puntos en 1 tiro (length===1)
       let isStrike = frameSum && frames[i].length === 1;
+      let isSpare = frameSum && frames[i].length === 2;
 
       if (isStrike) {
         console.log("STRIKE!");
+      } else if (isSpare) {
+        console.log("spare");
       }
     }
 
